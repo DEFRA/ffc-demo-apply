@@ -1,0 +1,58 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.22.1
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-JS-LODASH-590103:
+    - sequelize > lodash:
+        reason: No update to Sequelize available
+        expires: '2021-01-20T16:52:28.113Z'
+  SNYK-JS-AXIOS-1038255:
+    - notifications-node-client > axios:
+        reason: No exploit
+        expires: '2021-01-20T16:48:49.585Z'
+  SNYK-JS-AZUREMSRESTNODEAUTH-1245464:
+    - '@azure/ms-rest-nodeauth':
+        reason: No fix
+        expires: '2021-10-24T20:08:56.806Z'
+  SNYK-JS-UNDERSCORE-1080984:
+    - '@azure/ms-rest-nodeauth > adal-node > underscore':
+        reason: No fix
+        expires: '2021-05-27T15:48:43.922Z'
+    - pg-hstore > underscore:
+        reason: No fix
+        expires: '2021-05-27T15:50:15.809Z'
+  SNYK-JS-VALIDATOR-1090599:
+    - sequelize > validator:
+        reason: None given
+        expires: '2021-05-27T15:48:43.923Z'
+  SNYK-JS-VALIDATOR-1090600:
+    - sequelize > validator:
+        reason: No fix
+        expires: '2021-05-27T15:48:43.923Z'
+  SNYK-JS-VALIDATOR-1090601:
+    - sequelize > validator:
+        reason: No fix
+        expires: '2021-05-27T15:48:43.923Z'
+  SNYK-JS-VALIDATOR-1090602:
+    - sequelize > validator:
+        reason: No fix
+        expires: '2021-05-27T15:48:43.923Z'
+  SNYK-JS-XMLDOM-1534562:
+    - '@azure/ms-rest-nodeauth > adal-node > xmldom':
+        reason: None given
+        expires: '2021-10-24T20:08:56.806Z'
+  SNYK-JS-AXIOS-1579269:
+    - ffc-messaging > @azure/identity > axios:
+        reason: None given
+        expires: '2021-10-24T20:12:33.103Z'
+    - notifications-node-client > axios:
+        reason: None given
+        expires: '2021-10-24T20:12:33.103Z'
+    - ffc-messaging > @azure/identity > @azure/msal-node > axios:
+        reason: None given
+        expires: '2021-10-24T20:12:33.103Z'
+  SNYK-JS-ANSIREGEX-1583908:
+    - ffc-messaging > @azure/identity > keytar > prebuild-install > npmlog > gauge > wide-align > string-width > strip-ansi > ansi-regex:
+        reason: None given
+        expires: '2021-10-24T20:12:33.103Z'
+patch: {}

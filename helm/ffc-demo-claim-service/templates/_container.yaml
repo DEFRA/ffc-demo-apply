@@ -1,0 +1,2 @@
+{{- define "ffc-demo-claim-service.container" -}}
+{{- end -}}

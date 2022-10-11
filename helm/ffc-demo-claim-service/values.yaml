@@ -1,0 +1,66 @@
+environment: development
+name: ffc-demo-claim-service
+namespace: ffc-demo
+workstream: ffc-demo
+image: ffc-demo-claim-service
+
+labels: {}
+
+appInsights:
+  key: 
+
+azureIdentity:
+  resourceID: not-a-real-resourceID
+  clientID: not-a-real-clientID
+
+containerConfigMap:
+  name: ffc-demo-claim-service-config-map
+
+containerSecret:
+  name: ffc-demo-claim-service-container-secret
+  type: Opaque
+
+deployment:
+  restartPolicy: Always
+  priorityClassName: low
+  replicas: 1
+  minReadySeconds: 5
+  imagePullSecret:
+
+container:
+  imagePullPolicy: IfNotPresent
+  requestMemory: 5Mi
+  requestCpu: 5m
+  limitMemory: 120Mi
+  limitCpu: 120m
+  port: 3003
+  calculationQueueAddress: calculation
+  claimQueueAddress: claim
+  messageQueueHost: myservicebus.servicebus.windows.net
+  scheduleTopicAddress: schedule
+  appInsightsConsoleDebugEnabled: true
+  notifyApiKey:
+  notifyEmailTemplateKey:
+
+postgresService:
+  postgresDb: ffc_demo_claim
+  postgresqlHost: ffc-demo-claims-postgres
+  postgresSchema: public
+  postgresUser: postgres
+  postgresPort: 5432
+
+livenessProbe:
+  path: /healthz
+  port: 3003
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  failureThreshold: 3
+
+readinessProbe:
+  path: /healthy
+  port: 3003
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  failureThreshold: 3
+
+aadPodIdentity: true
