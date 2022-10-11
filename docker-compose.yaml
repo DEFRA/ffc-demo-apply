@@ -1,25 +1,25 @@
 version: '3.8'
 
 services:
-  ffc-demo-claim-service:
+  ffc-demo-apply:
     build:
       context: .
       target: production
-    image: ffc-demo-claim-service
-    container_name: ffc-demo-claim-service
+    image: ffc-demo-apply
+    container_name: ffc-demo-apply
     depends_on:
-      - ffc-demo-claim-postgres
+      - ffc-demo-apply-postgres
     environment:
-      APPINSIGHTS_CLOUDROLE: ffc-demo-claim-service-local
+      APPINSIGHTS_CLOUDROLE: ffc-demo-apply-local
       APPINSIGHTS_INSTRUMENTATIONKEY: ${APPINSIGHTS_INSTRUMENTATIONKEY}
       APPINSIGHTS_CONSOLE_DEBUG_ENABLED: ${APPINSIGHTS_CONSOLE_DEBUG_ENABLED:-false} 
       CALCULATION_QUEUE_ADDRESS: ${CALCULATION_QUEUE_ADDRESS:-ffc-demo-calculation}${MESSAGE_QUEUE_SUFFIX}
-      CLAIM_QUEUE_ADDRESS: ${CLAIM_QUEUE_ADDRESS:-ffc-demo-claim}${MESSAGE_QUEUE_SUFFIX}
+      CLAIM_QUEUE_ADDRESS: ${CLAIM_QUEUE_ADDRESS:-ffc-demo-apply}${MESSAGE_QUEUE_SUFFIX}
       MESSAGE_QUEUE_HOST: ${MESSAGE_QUEUE_HOST}
       MESSAGE_QUEUE_USER: ${MESSAGE_QUEUE_USER}
       MESSAGE_QUEUE_PASSWORD: ${MESSAGE_QUEUE_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB:-ffc_demo_claim}
-      POSTGRES_HOST: ${POSTGRES_HOST:-ffc-demo-claim-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-ffc_demo_apply}
+      POSTGRES_HOST: ${POSTGRES_HOST:-ffc-demo-apply-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_SCHEMA_PASSWORD:-ppp}
       POSTGRES_PORT: 5432
       POSTGRES_SCHEMA_NAME: ${POSTGRES_SCHEMA_NAME:-public}
@@ -28,9 +28,9 @@ services:
       NOTIFY_API_KEY: ${NOTIFY_API_KEY}
       NOTIFY_EMAIL_TEMPLATE_KEY: ${NOTIFY_EMAIL_TEMPLATE_KEY}
 
-  ffc-demo-claim-postgres:
+  ffc-demo-apply-postgres:
     image: postgres:11.4-alpine
     environment:
-      POSTGRES_DB: ffc_demo_claim
+      POSTGRES_DB: ffc_demo_apply
       POSTGRES_PASSWORD: ppp
       POSTGRES_USERNAME: postgres

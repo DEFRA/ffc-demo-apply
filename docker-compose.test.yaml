@@ -4,7 +4,7 @@ version: '3.8'
 # that test output is saved to the host
 
 services:
-  ffc-demo-claim-service:
+  ffc-demo-apply:
     build:
       context: .
       target: development
@@ -24,7 +24,7 @@ services:
       - ./jest.config.js:/home/node/jest.config.js
       - ./jest.setup.js:/home/node/jest.setup.js
 
-  ffc-demo-claim-postgres:
+  ffc-demo-apply-postgres:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 

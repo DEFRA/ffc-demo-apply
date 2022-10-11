@@ -1,4 +1,4 @@
-[![Known Vulnerabilities](https://snyk.io/test/github/DEFRA/ffc-demo-claim-service/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DEFRA/ffc-demo-claim-service?targetFile=package.json)
+[![Known Vulnerabilities](https://snyk.io/test/github/DEFRA/ffc-demo-apply/badge.svg?targetFile=package.json)](https://snyk.io/test/github/DEFRA/ffc-demo-apply?targetFile=package.json)
 
 # FFC Demo Claim Service
 
@@ -24,9 +24,9 @@ into an appropriately configured AKS cluster (where
 [AAD Pod Identity](https://github.com/Azure/aad-pod-identity) is
 configured) the micro-service will use AAD Pod Identity through the manifests
 for
-[azure-identity](./helm/ffc-demo-claim-service/templates/azure-identity.yaml)
+[azure-identity](./helm/ffc-demo-apply/templates/azure-identity.yaml)
 and
-[azure-identity-binding](./helm/ffc-demo-claim-service/templates/azure-identity-binding.yaml).
+[azure-identity-binding](./helm/ffc-demo-apply/templates/azure-identity-binding.yaml).
 
 | Name                               | Description                                                                                  |
 | ---------------------------------- | -------------------------------------------------------------------------------------------- |
@@ -41,7 +41,7 @@ The following environment variables are required by the application container. V
 | Name                               | Description                     | Required   | Default     | Valid                         | Notes                                                                               |
 | ---------------------------------- | -----------------------------   | :--------: | ----------- | :---------------------------: | ----------------------------------------------------------------------------------------- |
 | APPINSIGHTS_INSTRUMENTATIONKEY     | Key for application insight     | no         |             |                               | App insights only enabled if key is present. Note: Silently fails for invalid key         |
-| APPINSIGHTS_CLOUDROLE              | Role used for filtering metrics | no         |             |                               | Set to `ffc-demo-claim-service-local` in docker compose files                             |
+| APPINSIGHTS_CLOUDROLE              | Role used for filtering metrics | no         |             |                               | Set to `ffc-demo-apply-local` in docker compose files                             |
 | CALCULATION_QUEUE_ADDRESS          | Message queue address           | no        |             |                               |                                                                                           |
 | CLAIM_QUEUE_ADDRESS                | Message queue address           | no        |             |                               |                                                                                           |
 | NODE_ENV                           | Node environment                | no         |             | development,test,production   |                                                                                           |
@@ -74,7 +74,7 @@ achieved by setting the following environment variables:
 `MESSAGE_QUEUE_HOST`, `MESSAGE_QUEUE_PASSWORD`, `MESSAGE_QUEUE_USER`.
 `CALCULATION_QUEUE_ADDRESS`, `CLAIM_QUEUE_ADDRESS` & `SCHEDULE_QUEUE_ADDRESS`
 must be set to valid, developer specific queues that are available on ASB e.g.
-for the claim queue that would be `ffc-demo-claim-<initials>` where
+for the claim queue that would be `ffc-demo-apply-<initials>` where
 `<initials>` are the initials of the developer.
 
 ## Running the application
@@ -117,7 +117,7 @@ docker-compose -f docker-compose.yaml -f docker-compose.link.yaml up
 
 ### Test the message queue
 
-This service reacts to messages retrieved from Azure Service Bus (the "ffc-demo-claim" queue). It can be tested locally with:
+This service reacts to messages retrieved from Azure Service Bus (the "ffc-demo-apply" queue). It can be tested locally with:
 
 `docker-compose up` to start the service with a connection to the configured Azure Service Bus instance and developer queues.
 
@@ -143,7 +143,7 @@ It is also possible to run a limited subset of the application stack. See the [`
 
 ### Deploy to Kubernetes
 
-For production deployments, a helm chart is included in the `.\helm` folder. This service connects to an AMQP message broker, using credentials defined in [values.yaml](./helm/ffc-demo-claim-service/values.yaml), which must be made available prior to deployment.
+For production deployments, a helm chart is included in the `.\helm` folder. This service connects to an AMQP message broker, using credentials defined in [values.yaml](./helm/ffc-demo-apply/values.yaml), which must be made available prior to deployment.
 
 Scripts are provided to test the Helm chart by deploying the service, along with an appropriate message broker, into the current Helm/Kubernetes context.
 
@@ -163,7 +163,7 @@ Access may be granted by forwarding a local port to the deployed pod:
 
 ```
 # Forward local port to the Kubernetes deployment
-kubectl port-forward --namespace=ffc-demo deployment/ffc-demo-claim-service 3003:3003
+kubectl port-forward --namespace=ffc-demo deployment/ffc-demo-apply 3003:3003
 ```
 Once the port is forwarded, the service can be accessed and tested in the same way as described in the "Test the service" section above.
 

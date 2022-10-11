@@ -1,6 +1,6 @@
 apiVersion: v2
 description: A Helm chart for Kubernetes
-name: ffc-demo-claim-service
+name: ffc-demo-apply
 # this version is automatically updated in the build pipline
 version: 1.0.0
 dependencies:

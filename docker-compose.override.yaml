@@ -4,7 +4,7 @@ version: '3.8'
 # to provide required sibling services for local testing
 
 services:
-  ffc-demo-claim-service:
+  ffc-demo-apply:
     build:
       context: .
       target: development
@@ -18,7 +18,7 @@ services:
       - ./scripts:/home/node/scripts
       - ./package.json:/home/node/package.json
 
-  ffc-demo-claim-postgres:
+  ffc-demo-apply-postgres:
     ports:
       - "5432:5432"
     volumes:

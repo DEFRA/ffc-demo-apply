@@ -28,20 +28,20 @@ const mqConfig = {
     appInsights: process.env.NODE_ENV === 'production' ? require('applicationinsights') : undefined
   },
   calculationQueue: {
-    name: process.env.CALCULATION_QUEUE_NAME || 'ffc-demo-claim-service-calculation',
+    name: process.env.CALCULATION_QUEUE_NAME || 'ffc-demo-apply-calculation',
     address: process.env.CALCULATION_QUEUE_ADDRESS,
     username: process.env.MESSAGE_QUEUE_USER,
     password: process.env.MESSAGE_QUEUE_PASSWORD
   },
   scheduleTopic: {
-    name: process.env.SCHEDULE_TOPIC_NAME || 'ffc-demo-claim-service-schedule',
+    name: process.env.SCHEDULE_TOPIC_NAME || 'ffc-demo-apply-schedule',
     address: process.env.SCHEDULE_TOPIC_ADDRESS,
     username: process.env.MESSAGE_QUEUE_USER,
     password: process.env.MESSAGE_QUEUE_PASSWORD,
     type: 'topic'
   },
   claimQueue: {
-    name: process.env.CALCULATION_QUEUE_NAME || 'ffc-demo-claim-service-claim',
+    name: process.env.CALCULATION_QUEUE_NAME || 'ffc-demo-apply-claim',
     address: process.env.CLAIM_QUEUE_ADDRESS,
     username: process.env.MESSAGE_QUEUE_USER,
     password: process.env.MESSAGE_QUEUE_PASSWORD

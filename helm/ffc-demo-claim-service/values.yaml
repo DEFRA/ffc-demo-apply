@@ -1,8 +1,8 @@
 environment: development
-name: ffc-demo-claim-service
+name: ffc-demo-apply
 namespace: ffc-demo
 workstream: ffc-demo
-image: ffc-demo-claim-service
+image: ffc-demo-apply
 
 labels: {}
 
@@ -14,10 +14,10 @@ azureIdentity:
   clientID: not-a-real-clientID
 
 containerConfigMap:
-  name: ffc-demo-claim-service-config-map
+  name: ffc-demo-apply-config-map
 
 containerSecret:
-  name: ffc-demo-claim-service-container-secret
+  name: ffc-demo-apply-container-secret
   type: Opaque
 
 deployment:
@@ -43,8 +43,8 @@ container:
   notifyEmailTemplateKey:
 
 postgresService:
-  postgresDb: ffc_demo_claim
-  postgresqlHost: ffc-demo-claims-postgres
+  postgresDb: ffc_demo_apply
+  postgresqlHost: ffc-demo-applys-postgres
   postgresSchema: public
   postgresUser: postgres
   postgresPort: 5432
