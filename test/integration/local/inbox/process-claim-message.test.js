@@ -1,5 +1,5 @@
 const dbHelper = require('../../../db-helper')
-const processClaimMessage = require('../../../../app/messaging/inbox/process-claim-message')
+const processApplyMessage = require('../../../../app/messaging/inbox/process-apply-message')
 const { models } = require('../../../../app/services/database-service')()
 
 describe('processing claim message', () => {
@@ -32,13 +32,13 @@ describe('processing claim message', () => {
   })
 
   test('should save valid claim', async () => {
-    await processClaimMessage(message, claimReceiver)
+    await processApplyMessage(message, claimReceiver)
     const claims = await models.claims.findAll({ where: { claimId: message.body.claimId }, raw: true })
     expect(claims.length).toBe(1)
   })
 
   test('should save valid claim mineTypes', async () => {
-    await processClaimMessage(message, claimReceiver)
+    await processApplyMessage(message, claimReceiver)
     const mineTypes = await models.mineTypes.findAll({ where: { claimId: message.body.claimId }, raw: true })
     expect(mineTypes.length).toBe(2)
     expect(mineTypes.filter(x => x.mineType === 'gold').length).toBe(1)
@@ -46,26 +46,26 @@ describe('processing claim message', () => {
   })
 
   test('should save valid claim outbox', async () => {
-    await processClaimMessage(message, claimReceiver)
+    await processApplyMessage(message, claimReceiver)
     const outbox = await models.outbox.findAll({ where: { claimId: message.body.claimId, published: false }, raw: true })
     expect(outbox.length).toBe(1)
   })
 
   test('should not save duplicate claim', async () => {
-    await processClaimMessage(message, claimReceiver)
-    await processClaimMessage(message, claimReceiver)
+    await processApplyMessage(message, claimReceiver)
+    await processApplyMessage(message, claimReceiver)
     const claims = await models.claims.findAll({ where: { claimId: message.body.claimId }, raw: true })
     expect(claims.length).toBe(1)
   })
 
   test('should complete valid claim', async () => {
-    await processClaimMessage(message, claimReceiver)
+    await processApplyMessage(message, claimReceiver)
     expect(claimReceiver.completeMessage).toHaveBeenCalled()
   })
 
   test('should abandon invalid claim', async () => {
     message.body = 'not a claim'
-    await processClaimMessage(message, claimReceiver)
+    await processApplyMessage(message, claimReceiver)
     expect(claimReceiver.abandonMessage).toHaveBeenCalled()
   })
 })

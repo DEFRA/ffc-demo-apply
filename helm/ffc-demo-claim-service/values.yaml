@@ -33,34 +33,15 @@ container:
   requestCpu: 5m
   limitMemory: 120Mi
   limitCpu: 120m
-  port: 3003
-  calculationQueueAddress: calculation
-  claimQueueAddress: claim
+  applyQueueAddress: ffc-demo-apply
   messageQueueHost: myservicebus.servicebus.windows.net
-  scheduleTopicAddress: schedule
   appInsightsConsoleDebugEnabled: true
-  notifyApiKey:
-  notifyEmailTemplateKey:
 
 postgresService:
   postgresDb: ffc_demo_apply
-  postgresqlHost: ffc-demo-applys-postgres
+  postgresqlHost: ffc-demo-apply-postgres
   postgresSchema: public
   postgresUser: postgres
   postgresPort: 5432
-
-livenessProbe:
-  path: /healthz
-  port: 3003
-  initialDelaySeconds: 10
-  periodSeconds: 10
-  failureThreshold: 3
-
-readinessProbe:
-  path: /healthy
-  port: 3003
-  initialDelaySeconds: 10
-  periodSeconds: 10
-  failureThreshold: 3
 
 aadPodIdentity: true

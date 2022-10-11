@@ -1,6 +1,3 @@
 resources:
   queues:
     - name: claim
-    - name: calculation
-  topics:
-    - name: schedule

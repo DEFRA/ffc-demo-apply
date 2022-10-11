@@ -43,7 +43,7 @@ The following environment variables are required by the application container. V
 | APPINSIGHTS_INSTRUMENTATIONKEY     | Key for application insight     | no         |             |                               | App insights only enabled if key is present. Note: Silently fails for invalid key         |
 | APPINSIGHTS_CLOUDROLE              | Role used for filtering metrics | no         |             |                               | Set to `ffc-demo-apply-local` in docker compose files                             |
 | CALCULATION_QUEUE_ADDRESS          | Message queue address           | no        |             |                               |                                                                                           |
-| CLAIM_QUEUE_ADDRESS                | Message queue address           | no        |             |                               |                                                                                           |
+| APPLY_QUEUE_ADDRESS                | Message queue address           | no        |             |                               |                                                                                           |
 | NODE_ENV                           | Node environment                | no         |             | development,test,production   |                                                                                           |
 | POSTGRES_DB                        | PostgreSQL database             | yes        |             |                               |                                                                                           |
 | POSTGRES_HOST                      | PostgreSQL host                 | yes        |             |                               |                                                                                           |
@@ -72,7 +72,7 @@ scripts/test -w
 Running the integration tests locally requires access to ASB, this can be
 achieved by setting the following environment variables:
 `MESSAGE_QUEUE_HOST`, `MESSAGE_QUEUE_PASSWORD`, `MESSAGE_QUEUE_USER`.
-`CALCULATION_QUEUE_ADDRESS`, `CLAIM_QUEUE_ADDRESS` & `SCHEDULE_QUEUE_ADDRESS`
+`CALCULATION_QUEUE_ADDRESS`, `APPLY_QUEUE_ADDRESS` & `SCHEDULE_QUEUE_ADDRESS`
 must be set to valid, developer specific queues that are available on ASB e.g.
 for the claim queue that would be `ffc-demo-apply-<initials>` where
 `<initials>` are the initials of the developer.
@@ -163,7 +163,7 @@ Access may be granted by forwarding a local port to the deployed pod:
 
 ```
 # Forward local port to the Kubernetes deployment
-kubectl port-forward --namespace=ffc-demo deployment/ffc-demo-apply 3003:3003
+kubectl port-forward --namespace=ffc-demo deployment/ffc-demo-apply 3001:3001
 ```
 Once the port is forwarded, the service can be accessed and tested in the same way as described in the "Test the service" section above.
 

@@ -3,14 +3,16 @@
 data:
   APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
   APPINSIGHTS_CONSOLE_DEBUG_ENABLED: {{ quote .Values.container.appInsightsConsoleDebugEnabled}}
-  CALCULATION_QUEUE_ADDRESS: {{ quote .Values.container.calculationQueueAddress }}
-  CLAIM_QUEUE_ADDRESS: {{ quote .Values.container.claimQueueAddress }}
+  {{- if and (.Values.environmentCode) (not .Values.pr) }}
+  APPLY_QUEUE_ADDRESS: {{ quote .Values.container.applyQueueAddress }}-{{ .Values.environmentCode }}
+  {{ else }}
+  APPLY_QUEUE_ADDRESS: {{ quote .Values.container.applyQueueAddress }}
+  {{- end }}
   MESSAGE_QUEUE_HOST: {{ quote .Values.container.messageQueueHost }}
   NODE_ENV: {{ quote .Values.environment }}
   POSTGRES_DB: {{ quote .Values.postgresService.postgresDb }}
   POSTGRES_HOST: {{ quote .Values.postgresService.postgresqlHost }}
   POSTGRES_PORT: {{ quote .Values.postgresService.postgresPort }}
   POSTGRES_SCHEMA_NAME: {{ quote .Values.postgresService.postgresSchema }}
-  SCHEDULE_TOPIC_ADDRESS: {{ quote .Values.container.scheduleTopicAddress }}
   APPINSIGHTS_CONSOLE_DEBUG_ENABLED: {{ quote .Values.container.appInsightsConsoleDebugEnabled}}
 {{- end -}}

@@ -1,18 +1,18 @@
 const config = require('../../config')
-const mqConfig = config.messageQueues.claimQueue
-const processClaimMessage = require('./process-claim-message')
+const mqConfig = config.messageQueues.applyQueue
+const processApplyMessage = require('./process-apply-message')
 const { MessageReceiver } = require('ffc-messaging')
-let claimReceiver
+let applyReceiver
 
 async function start () {
-  const claimAction = message => processClaimMessage(message, claimReceiver)
-  claimReceiver = new MessageReceiver(mqConfig, claimAction)
-  await claimReceiver.subscribe()
+  const applyAction = message => processApplyMessage(message, applyReceiver)
+  applyReceiver = new MessageReceiver(mqConfig, applyAction)
+  await applyReceiver.subscribe()
   console.info('Inbox service running, ready to receive claims')
 }
 
 async function stop () {
-  await claimReceiver.closeConnection()
+  await applyReceiver.closeConnection()
 }
 
 module.exports = { start, stop }
