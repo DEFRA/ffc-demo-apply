@@ -18,11 +18,6 @@ module.exports = {
     '<rootDir>/jest.config.js',
     '<rootDir>/jest.setup.js'
   ],
-  coverageThreshold: {
-    global: {
-      statements: 75
-    }
-  },
   modulePathIgnorePatterns: [
     'node_modules'
   ],
