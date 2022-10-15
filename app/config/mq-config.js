@@ -21,7 +21,7 @@ const mqConfig = {
     host: process.env.MESSAGE_QUEUE_HOST,
     useCredentialChain: process.env.NODE_ENV === 'production',
     type: 'queue',
-    appInsights: process.env.NODE_ENV === 'production' ? require('applicationinsights') : undefined,    
+    appInsights: process.env.NODE_ENV === 'production' ? require('applicationinsights') : undefined,
     username: process.env.MESSAGE_QUEUE_USER,
     password: process.env.MESSAGE_QUEUE_PASSWORD
   },

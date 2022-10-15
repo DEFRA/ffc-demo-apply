@@ -1,4 +1,3 @@
-const createMessage = require('./create-message')
 const updatePublished = require('./update-published')
 const getPendingClaims = require('./get-pending-claims')
 
@@ -11,7 +10,6 @@ async function publishPendingClaims (calculationSender, scheduleSender) {
 
 async function publishClaim (claim, calculationSender, scheduleSender) {
   try {
-    const message = createMessage(claim)
     // TODO: Events go here
     await updatePublished(claim.claimId)
   } catch (err) {
