@@ -11,7 +11,7 @@ describe('receiving a new claim', () => {
     await dbHelper.truncate()
     messagePact = new MessageConsumerPact({
       consumer: 'ffc-demo-apply',
-      provider: 'ffc-demo-web',
+      provider: 'ffc-demo-apply-web',
       log: path.resolve(process.cwd(), 'test-output', 'pact.log'),
       dir: path.resolve(process.cwd(), 'test-output')
     })
