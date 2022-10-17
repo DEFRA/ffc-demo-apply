@@ -4,7 +4,7 @@ data:
   APPINSIGHTS_CLOUDROLE: {{ quote .Values.name }}
   APPINSIGHTS_CONSOLE_DEBUG_ENABLED: {{ quote .Values.container.appInsightsConsoleDebugEnabled}}
   {{- if and (.Values.environmentCode) (not .Values.pr) }}
-  APPLY_QUEUE_ADDRESS: {{ quote .Values.container.applyQueueAddress }}-{{ .Values.environmentCode }}
+  APPLY_QUEUE_ADDRESS: {{ .Values.container.applyQueueAddress }}-{{ .Values.environmentCode }}
   {{ else }}
   APPLY_QUEUE_ADDRESS: {{ quote .Values.container.applyQueueAddress }}
   {{- end }}
