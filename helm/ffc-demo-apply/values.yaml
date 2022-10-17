@@ -1,4 +1,5 @@
 environment: development
+environmentCode:
 name: ffc-demo-apply
 namespace: ffc-demo
 workstream: ffc-demo
