@@ -9,7 +9,7 @@ services:
       context: .
       target: development
     ports:
-      - "9230:9229"
+      - "9011:9229"
     environment:
       APPINSIGHTS_CONSOLE_DEBUG_ENABLED: ${APPINSIGHTS_CONSOLE_DEBUG_ENABLED:-true}
     volumes:
