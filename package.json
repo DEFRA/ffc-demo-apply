@@ -26,7 +26,7 @@
     "ffc-messaging": "2.5.1",
     "joi": "17.6.3",
     "notifications-node-client": "5.2.0",
-    "pg": "8.8.0",
+    "pg": "8.11.1",
     "pg-hstore": "2.3.4",
     "sequelize": "6.25.0"
   },
