@@ -24,7 +24,7 @@
     "@azure/ms-rest-nodeauth": "3.1.1",
     "applicationinsights": "2.3.5",
     "ffc-messaging": "2.5.1",
-    "joi": "17.6.3",
+    "joi": "17.9.2",
     "notifications-node-client": "5.2.0",
     "pg": "8.8.0",
     "pg-hstore": "2.3.4",
