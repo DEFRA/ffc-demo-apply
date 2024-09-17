@@ -1,8 +1,3 @@
 {{- include "ffc-helm-library.deployment" (list . "ffc-demo-apply.deployment") -}}
 {{- define "ffc-demo-apply.deployment" -}}
-spec:
-  template:
-    spec:
-      containers:
-      - {{ include "ffc-helm-library.container" (list . "ffc-demo-apply.container") }}
 {{- end -}}

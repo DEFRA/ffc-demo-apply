@@ -1,6 +1,7 @@
 const { models, sequelize } = require('../../services/database-service')()
 
 async function createClaim (claim) {
+  console.log(claim)
   await sequelize.transaction(async (transaction) => {
     const existingClaim = await models.claims.findOne({ where: { claimId: claim.claimId } }, { transaction })
     if (!existingClaim) {
