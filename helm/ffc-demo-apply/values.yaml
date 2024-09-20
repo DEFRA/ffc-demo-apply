@@ -5,14 +5,10 @@ namespace: ffc-demo
 workstream: ffc-demo
 image: ffc-demo-apply
 
-labels: {}
-
 appInsights:
-  key: 
+  connectionString:
 
-azureIdentity:
-  resourceID: not-a-real-resourceID
-  clientID: not-a-real-clientID
+labels: {}
 
 containerConfigMap:
   name: ffc-demo-apply-config-map
@@ -37,6 +33,23 @@ container:
   applyQueueAddress: ffc-demo-apply
   messageQueueHost: myservicebus.servicebus.windows.net
   appInsightsConsoleDebugEnabled: true
+  port: 3000
+
+livenessProbe:
+  path: /healthz
+  port: 3000
+  initialDelaySeconds: 20
+  periodSeconds: 10
+  failureThreshold: 3
+  timeoutSeconds: 5
+
+readinessProbe:
+  path: /healthy
+  port: 3000
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  failureThreshold: 3
+  timeoutSeconds: 5
 
 postgresService:
   postgresDb: ffc_demo_apply
@@ -46,3 +59,8 @@ postgresService:
   postgresPort: 5432
 
 aadPodIdentity: true
+
+# Enable if Managed Identity is required, ensure the clientID and resourceID are set in Platform Configuration
+azureIdentity:
+  resourceID: not-a-real-resourceID
+  clientID: not-a-real-clientID
