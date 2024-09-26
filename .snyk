@@ -10,14 +10,6 @@ ignore:
     - notifications-node-client > axios:
         reason: No exploit
         expires: '2021-01-20T16:48:49.585Z'
-  SNYK-JS-AZUREMSRESTNODEAUTH-1245464:
-    - '@azure/ms-rest-nodeauth':
-        reason: No fix
-        expires: '2021-10-24T20:08:56.806Z'
-  SNYK-JS-UNDERSCORE-1080984:
-    - '@azure/ms-rest-nodeauth > adal-node > underscore':
-        reason: No fix
-        expires: '2021-05-27T15:48:43.922Z'
     - pg-hstore > underscore:
         reason: No fix
         expires: '2021-05-27T15:50:15.809Z'
@@ -37,10 +29,6 @@ ignore:
     - sequelize > validator:
         reason: No fix
         expires: '2021-05-27T15:48:43.923Z'
-  SNYK-JS-XMLDOM-1534562:
-    - '@azure/ms-rest-nodeauth > adal-node > xmldom':
-        reason: None given
-        expires: '2021-10-24T20:08:56.806Z'
   SNYK-JS-AXIOS-1579269:
     - ffc-messaging > @azure/identity > axios:
         reason: None given

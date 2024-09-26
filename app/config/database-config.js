@@ -1,7 +1,7 @@
-const auth = require('@azure/ms-rest-nodeauth')
+const { DefaultAzureCredential } = require('@azure/identity')
 const { production } = require('./constants').environments
 
-function isProd () {
+function isProd() {
   return process.env.NODE_ENV === production
 }
 
@@ -20,9 +20,9 @@ const dbConfig = {
   hooks: {
     beforeConnect: async (cfg) => {
       if (isProd()) {
-        const credentials = await auth.loginWithVmMSI({ resource: 'https://ossrdbms-aad.database.windows.net' })
-        const token = await credentials.getToken()
-        cfg.password = token.accessToken
+        const credential = new DefaultAzureCredential()
+        const accessToken = await credential.getToken('https://ossrdbms-aad.database.windows.net', { requestOptions: { timeout: 1000 } })
+        cfg.password = accessToken.token
       }
     }
   },
