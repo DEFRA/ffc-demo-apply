@@ -11,7 +11,7 @@ appInsights:
 labels: {}
 
 containerConfigMap:
-  name: ffc-demo-apply-config-map
+  name: ffc-demo-apply
 
 containerSecret:
   name: ffc-demo-apply-container-secret
@@ -58,9 +58,9 @@ postgresService:
   postgresUser: postgres
   postgresPort: 5432
 
-aadPodIdentity: true
+workloadIdentity: true
 
 # Enable if Managed Identity is required, ensure the clientID and resourceID are set in Platform Configuration
 azureIdentity:
-  resourceID: not-a-real-resourceID
-  clientID: not-a-real-clientID
+  resourceID: /subscriptions/cd4e9a00-99d8-45a2-98bb-7648ef12c26d/resourcegroups/SNDFFCAKSRG1001/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ffc-snd-demo-apply
+  clientID: c1f67e8b-1da6-4213-b948-c312ffdb5058
