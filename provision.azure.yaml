@@ -1,5 +1,9 @@
 resources:
-  identity: ffc-demo-apply
+  identity: demo-apply-role
+  queues:
+    - name: ffc-demo-apply
+      role: sender
+  postgreSql: ffc-demo-apply
   # topics:
   #   - name: ffc-demo-apply
   #     queues:
@@ -7,19 +11,10 @@ resources:
   #         role: sender/reciever
   #         subscription:
   #           name: subscription_name
-  queues:
-    - name: ffc-demo-apply
-      role: sender
-      # subscription:
-      #       name: subscription_name
-  postgreSqls:
-    - name: ffc-demo-apply
   # storages:
   #   - name: ffcdemoapplystorage
-  # redis: 
+  # redis:
   #   name: default
   # accessTo:
   #     postgreSqls:
   #       - name: some-database
-      
-     
