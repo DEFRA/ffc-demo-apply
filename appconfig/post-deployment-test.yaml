@@ -1,9 +1,9 @@
 environments:
-  - name: dev
+  dev:
     environment_root_url: http://something
     image: docker_image
     path: acceptance/
-  - name: test
+  test:
     environment_root_url: http://something
     image: docker_image
     path: acceptance/
