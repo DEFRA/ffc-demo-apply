@@ -1,11 +1,12 @@
 environments:
   dev:
-    environment_root_url: http://something
-    image: docker_image
-    path: acceptance/
+    image: hello-world
+    test_env:
+      path: acceptance/
+      myvar: demo-apply-dev
   test:
-    environment_root_url: http://something
-    image: docker_image
-    path: acceptance/
+    image: hello-world
+    test_env:
+      path: acceptance/
   
   
