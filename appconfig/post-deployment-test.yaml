@@ -3,7 +3,8 @@ environments:
     dev01:
       image: hello-world
       command: [""]
-      report_dir: "reports/"
+      tests_path: "test/"
+      report_dir: "test-output/"
       env_variables:
         path: integration/
         env_url: dev01-demo-apply-web
@@ -12,6 +13,8 @@ environments:
     dev_integration:
       image: hello-world
       command: ["echo"]
+      tests_path: "test/"
+      report_dir: "test-output/"
       env_variables:
         path: integration/
         env_url: devIntegration-demo-apply-web
@@ -22,7 +25,8 @@ environments:
     test-acceptance:
       image: hello-world
       command: [""]
-      result_path: "reports/"
+      tests_path: "test/"
+      report_dir: "test-output/"
       env_variables:
         path: acceptance/
         env_url: testAcceptance-demo-apply-web
@@ -31,8 +35,10 @@ environments:
     test_02:
       image: hello-world
       command: [""]
-      result_path: "reports/"
+      tests_path: "test/"
+      report_dir: "test-output/"
       env_variables:
         path: acceptance/
         env_url: test02-demo-apply-web
         any_key: anyValue
+        
