@@ -1,12 +1,38 @@
 environments:
   dev:
-    image: hello-world
-    test_env:
-      path: acceptance/
-      myvar: demo-apply-dev
+    dev01:
+      image: hello-world
+      command: [""]
+      report_dir: "reports/"
+      env_variables:
+        path: integration/
+        env_url: dev01-demo-apply-web
+        any_key: anyValue
+
+    dev_integration:
+      image: hello-world
+      command: ["echo"]
+      env_variables:
+        path: integration/
+        env_url: devIntegration-demo-apply-web
+        any_key: anyValue
+        anotherKey: extra-value
+
   test:
-    image: hello-world
-    test_env:
-      path: acceptance/
-  
-  
+    test-acceptance:
+      image: hello-world
+      command: [""]
+      result_path: "reports/"
+      env_variables:
+        path: acceptance/
+        env_url: testAcceptance-demo-apply-web
+        any_key: anyValue
+
+    test_02:
+      image: hello-world
+      command: [""]
+      result_path: "reports/"
+      env_variables:
+        path: acceptance/
+        env_url: test02-demo-apply-web
+        any_key: anyValue
