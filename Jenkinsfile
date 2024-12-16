@@ -1,3 +1,3 @@
-@Library('defra-library@v-10') _
+@Library('defra-library@feature/pl-158-flexi-2') _
 
 buildNodeJs()
