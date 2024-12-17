@@ -1,6 +1,9 @@
 resources:
   identity: demo-apply-role
-  postgreSql: ffc-demo-apply
+  postgreSql:
+    name: ffc-ahwr-application
+    extensions:
+      - name: uuid-ossp
   queues:
     - name: ffc-demo-apply
       role: sender
