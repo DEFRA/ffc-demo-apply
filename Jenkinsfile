@@ -1,3 +1,3 @@
-@Library('defra-library@feature/v-10') _
+@Library('defra-library@v-10') _
 
 buildNodeJs()
