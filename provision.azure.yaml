@@ -6,7 +6,7 @@ resources:
       - name: uuid-ossp
   queues:
     - name: ffc-demo-apply
-      role: sender
+      role: reciever
   topics:
     - name: ffc-demo-apply-sample
       role: reciever
