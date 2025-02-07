@@ -4,8 +4,7 @@ environments:
     dev01:
       image: hello-world
       command: ["bin/sh", "-c", "echo Hello World"]
-      tests-path: "integration/"
-      report-dir: "test-output/"
+      tests-path: "" 
       env-variables:
         env-url: dev01-demo-apply-web
         any-key: anyValue
@@ -13,7 +12,7 @@ environments:
     dev-integration:
       image: hello-world
       command: [""]
-      tests-path: "integration/"
+      tests-path: ""
       env-variables:
         env-url: devIntegration-demo-apply-web
         any-key: anyValue
@@ -23,8 +22,7 @@ environments:
     test-acceptance:
       image: hello-world
       command: [""]
-      tests-path: "integration/"
-      result-path: "reports/"
+      tests-path: ""
       env-variables:
         env-url: testAcceptance-demo-apply-web
         any-key: anyValue
@@ -32,8 +30,7 @@ environments:
     test-02:
       image: hello-world
       command: [""]
-      tests-path: "integration/"
-      result-path: "reports/"
+      tests-path: ""
       env-variables:
         env-url: test02-demo-apply-web
         any-key: anyValue
