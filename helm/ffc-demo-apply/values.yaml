@@ -13,10 +13,6 @@ labels: {}
 containerConfigMap:
   name: ffc-demo-apply
 
-containerSecret:
-  name: ffc-demo-apply-container-secret
-  type: Opaque
-
 deployment:
   restartPolicy: Always
   priorityClassName: low
@@ -62,5 +58,18 @@ workloadIdentity: true
 
 # Enable if Managed Identity is required, ensure the clientID and resourceID are set in Platform Configuration
 azureIdentity:
-  resourceID:
-  clientID:
+  resourceID: not-a-real-value
+  clientID: not-a-real-value
+
+secretProviderClass:
+  azure:
+    objects: # reading the secret from Azure Key Vault
+      - objectName: appInsights-connectionString # secret name in Azure Key Vault
+        objectType: secret
+
+  secretObjects: # creating a kubernetes secret from the Azure Key Vault secrets
+    - secretName: ffc-demo-apply
+      type: Opaque
+      data:
+        - objectName: appInsights-connectionString
+          key: APPINSIGHTS_CONNECTIONSTRING # they secret key in kubernetes secret and use in the application

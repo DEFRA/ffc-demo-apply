@@ -1,10 +1,40 @@
 resources:
   identity: demo-apply-role
+  service_bus:
+    queues:
+      - name: ffc-demo-apply
+        existing: true
+        roles:
+          - name: sender
+          - name: receiver
+    topics:
+      - name: ffc-demo-apply-top
+        roles:
+          - name: sender
+          - name: receiver
+        subscriptions:
+          - name: ffc-demo-apply-sub
+  storage_accounts:
+    - name: demo
+      containers:
+        - name: demo-blob
+          roles:
+            - name: blobContributor
+      tables:
+        - name: demotable
+          roles:
+            - name: tableContributor
+      queues:
+        - name: demo-queue
+          roles:
+            - name: queueTriggerReader
+            - name: queueTriggerProcessor
+            - name: queueSender
+      roles:
+        - name: storageAccountContributor
   postgreSql:
     name: ffc-demo-apply
     extensions:
       - name: uuid-ossp
-  queues:
-    - name: ffc-demo-apply
-      role: receiver
+
 
