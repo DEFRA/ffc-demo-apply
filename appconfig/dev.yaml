@@ -1,1 +1,6 @@
 ---
+environment: production
+environmentCode: dev
+secretProviderClass.azure.keyvaultName: DEVFFCINFKV1001
+container.applyQueueAddress: ffc-demo-apply
+container.messageQueueHost: SNDFFCINFSB2001.servicebus.windows.net
