@@ -1,1 +1,6 @@
 ---
+environment: production
+environmentCode: pre
+secretProviderClass.azure.keyvaultName: PREFFCINFKV1001
+container.applyQueueAddress: ffc-demo-apply
+container.messageQueueHost: PREFFCINFSB1001.servicebus.windows.net

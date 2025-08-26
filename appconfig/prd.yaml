@@ -1,1 +1,6 @@
 ---
+environment: production
+environmentCode: prd
+secretProviderClass.azure.keyvaultName: PRDFFCINFKV1001
+container.applyQueueAddress: ffc-demo-apply
+container.messageQueueHost: PRDFFCINFSB1001.servicebus.windows.net

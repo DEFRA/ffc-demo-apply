@@ -15,4 +15,5 @@ data:
   POSTGRES_HOST: {{ .Values.postgresService.postgresqlHost | quote }}
   POSTGRES_PORT: {{ .Values.postgresService.postgresPort | quote }}
   POSTGRES_SCHEMA_NAME: {{ .Values.postgresService.postgresSchema | quote }}
+  POSTGRES_USERNAME: {{ .Values.postgresService.postgresUser | quote }}
 {{- end -}}
