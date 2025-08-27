@@ -26,7 +26,7 @@ resources:
       endpoint: DEFRA
       type: github
       name: defra/fcp-pipeline-common
-      # ref: Branch-Name
+      ref: pl-707
 
 extends:
   template: fcp-common-pipeline.yaml@templates
