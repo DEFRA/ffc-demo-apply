@@ -22,9 +22,9 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
-      # - name: Pact Broker connectivity
-      #   env:
-      #     PACT_USER: ${{ secrets.PACT_USER }}
-      #     PACT_PASS: ${{ secrets.PACT_PASS }}
-      #   run: |
-      #     curl -s -u "$PACT_USER:$PACT_PASS" -o /dev/null -w "%{http_code}\n" https://ffc-pact-broker.azure.defra.cloud
+      - name: Pact Broker connectivity
+        env:
+          PACT_USER: ${{ secrets.PACT_USER }}
+          PACT_PASS: ${{ secrets.PACT_PASS }}
+        run: |
+          curl -s -u "$PACT_USER:$PACT_PASS" -o /dev/null -w "%{http_code}\n" https://ffc-pact-broker.azure.defra.cloud
