@@ -1,4 +1,4 @@
-name: '$(Build.SourceBranchName)$(System.PullRequest.SourceBranch)$(Rev:.r)'
+name: '$(SourceBranchName)$(Rev:.r)'
 
 trigger:
   - main
@@ -35,4 +35,3 @@ extends:
     prDeployment: ${{ parameters.prDeployment }}
     branchDeployment: ${{ parameters.branchDeployment }}
     sndDeployment: ${{ parameters.sndDeployment }}
-    
