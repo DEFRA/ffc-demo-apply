@@ -31,7 +31,7 @@
     "notifications-node-client": "8.2.1",
     "pg": "8.12.0",
     "pg-hstore": "2.3.4",
-    "sequelize": "6.37.3"
+    "sequelize": "6.37.5"
   },
   "devDependencies": {
     "@pact-foundation/pact": "13.1.3",
