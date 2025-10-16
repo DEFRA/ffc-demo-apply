@@ -5,7 +5,7 @@
         "Name": "sbemulatorns",
         "Queues": [
           {
-            "Name": "ffc-demo-applylocal",
+            "Name": "ffc-demo-apply-local",
             "Properties": {
               "DeadLetteringOnMessageExpiration": false,
               "DefaultMessageTimeToLive": "PT1H",
