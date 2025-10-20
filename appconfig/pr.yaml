@@ -1,6 +1,6 @@
 ---
 environment: production
 environmentCode: snd
-secretProviderClass.azure.keyvaultName: SNDFFCINFKV2001
-container.applyQueueAddress: queue:ffc-demo-apply
-container.messageQueueHost: SNDFFCINFSB2001.servicebus.windows.net
+container:
+  applyQueueAddress: queue:ffc-demo-apply
+  messageQueueHost: SNDFFCINFSB2001.servicebus.windows.net
