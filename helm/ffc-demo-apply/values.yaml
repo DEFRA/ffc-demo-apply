@@ -66,6 +66,7 @@ azureIdentity:
 
 secretProviderClass:
   azure:
+    keyvaultName: SNDFFCINFKV2001
     objects: # reading the secret from Azure Key Vault
       - objectName: appInsights-connectionString # secret name in Azure Key Vault
         objectType: secret

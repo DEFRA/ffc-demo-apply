@@ -1,11 +1,12 @@
 ---
 environment: production
 environmentCode: pre
-secretProviderClass.azure.keyvaultName: PREFFCINFKV1001
-container.applyQueueAddress: ffc-demo-apply
-container.messageQueueHost: PREFFCINFSB1001.servicebus.windows.net
+container:
+  applyQueueAddress: ffc-demo-apply
+  messageQueueHost: PREFFCINFSB1001.servicebus.windows.net
 secretProviderClass:
   azure:
+    keyvaultName: PREFFCINFKV1001
     objects: # reading the secret from Azure Key Vault
       - objectName: pre-ffcahwr-appinsights-connectionString # secret name in Azure Key Vault
         objectType: secret
