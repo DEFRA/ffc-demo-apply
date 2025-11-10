@@ -36,5 +36,6 @@ extends:
     branchDeployment: ${{ parameters.branchDeployment }}
     sndDeployment: ${{ parameters.sndDeployment }}
     # failOnThreshold: high
+    enableServiceNowChangeCreationSandpitForBetaDeploy: true
     enableServiceNowChangeCreationSandpit: true
     enableServiceNowChangeCreation: true
