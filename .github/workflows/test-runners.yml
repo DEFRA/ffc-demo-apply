@@ -27,7 +27,7 @@ jobs:
           PACT_USER: ${{ secrets.PACT_USER }}
           PACT_PASS: ${{ secrets.TESTY }}
         run: |
-          echo $TESTY
+          echo $PACT_PASS
           echo env
         
           # curl -s -u "$PACT_USER:$PACT_PASS" -o /dev/null -w "%{http_code}\n" https://ffc-pact-broker.azure.defra.cloud
