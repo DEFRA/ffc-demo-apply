@@ -1,0 +1,6 @@
+---
+environment: production
+environmentCode: snd
+container:
+  applyQueueAddress: queue:ffc-demo-apply
+  messageQueueHost: SNDFFCINFSB2001.servicebus.windows.net

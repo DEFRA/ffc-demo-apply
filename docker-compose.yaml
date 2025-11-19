@@ -7,14 +7,16 @@ services:
     container_name: ffc-demo-apply
     depends_on:
       - ffc-demo-apply-postgres
+      - emulator
+
     environment:
       APPINSIGHTS_CLOUDROLE: ffc-demo-apply-local
-      APPINSIGHTS_INSTRUMENTATIONKEY: ${APPINSIGHTS_INSTRUMENTATIONKEY}
+      APPINSIGHTS_INSTRUMENTATIONKEY: ${APPINSIGHTS_INSTRUMENTATIONKEY:-}
       APPINSIGHTS_CONSOLE_DEBUG_ENABLED: ${APPINSIGHTS_CONSOLE_DEBUG_ENABLED:-false}
-      APPLY_QUEUE_ADDRESS: ${APPLY_QUEUE_ADDRESS:-ffc-demo-apply}${MESSAGE_QUEUE_SUFFIX}
-      MESSAGE_QUEUE_HOST: ${MESSAGE_QUEUE_HOST}
-      MESSAGE_QUEUE_USER: ${MESSAGE_QUEUE_USER}
-      MESSAGE_QUEUE_PASSWORD: ${MESSAGE_QUEUE_PASSWORD}
+      APPLY_QUEUE_ADDRESS: ${APPLY_QUEUE_ADDRESS:-ffc-demo-apply}${MESSAGE_QUEUE_SUFFIX:-local}
+      MESSAGE_QUEUE_HOST: ${MESSAGE_QUEUE_HOST:-emulator}
+      MESSAGE_QUEUE_USER: ${MESSAGE_QUEUE_USER:-RootManageSharedAccessKey}
+      MESSAGE_QUEUE_PASSWORD: ${MESSAGE_QUEUE_PASSWORD:-SAS_KEY_VALUE}
       POSTGRES_DB: ${POSTGRES_DB:-ffc_demo_apply}
       POSTGRES_HOST: ${POSTGRES_HOST:-ffc-demo-apply-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_SCHEMA_PASSWORD:-ppp}
@@ -23,9 +25,38 @@ services:
       POSTGRES_USERNAME: ${POSTGRES_SCHEMA_USERNAME:-postgres}
 
   ffc-demo-apply-postgres:
-    image: postgres:15.8-alpine3.20
+    image: postgres:16.10-alpine3.22
     environment:
       POSTGRES_PORT: ${POSTGRES_PORT:-5432}
       POSTGRES_DB: ffc_demo_apply
       POSTGRES_PASSWORD: ppp
       POSTGRES_USERNAME: postgres
+
+  sqledge:
+    container_name: "sqledge"
+    image: "mcr.microsoft.com/azure-sql-edge:latest"
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "DummyStrongPa$$w0rd" # To be filled by user as per policy : https://learn.microsoft.com/en-us/sql/relational-databases/security/strong-passwords?view=sql-server-linux-ver16
+
+  emulator:
+    container_name: "servicebus-emulator"
+    image: mcr.microsoft.com/azure-messaging/servicebus-emulator:latest
+    pull_policy: always
+    volumes:
+      - "./BusConfig.json:/ServiceBus_Emulator/ConfigFiles/Config.json"
+    ports:
+      - "5672:5672"
+      # - "5300:5300"
+    environment:
+      SQL_SERVER: sqledge
+      MSSQL_SA_PASSWORD: "DummyStrongPa$$w0rd" # Password should be same as what is set for SQL Edge
+      ACCEPT_EULA: "Y"
+    depends_on:
+      - sqledge
+
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 5672"]
+      interval: 5s
+      timeout: 3s
+      retries: 30

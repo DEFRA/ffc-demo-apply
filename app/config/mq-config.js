@@ -12,7 +12,8 @@ const mqSchema = joi.object({
     appInsights: joi.object(),
     username: joi.string().optional(),
     password: joi.string().optional(),
-    managedIdentityClientId: joi.string().optional()
+    managedIdentityClientId: joi.string().optional(),
+    useEmulator: joi.bool().default(false)
   },
   applyQueue: queueSchema
 })
@@ -25,7 +26,8 @@ const mqConfig = {
     appInsights: process.env.NODE_ENV === 'production' ? require('applicationinsights') : undefined,
     username: process.env.MESSAGE_QUEUE_USER,
     password: process.env.MESSAGE_QUEUE_PASSWORD,
-    managedIdentityClientId: process.env.AZURE_CLIENT_ID
+    managedIdentityClientId: process.env.AZURE_CLIENT_ID,
+    useEmulator: process.env.NODE_ENV !== 'production'
   },
   applyQueue: {
     address: process.env.APPLY_QUEUE_ADDRESS
