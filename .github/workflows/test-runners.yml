@@ -25,9 +25,10 @@ jobs:
       - name: Pact Broker connectivity
         env:
           PACT_USER: ${{ secrets.PACT_USER }}
-          PACT_PASS: ${{ secrets.TESTY }}
+          PACT_PASS: ${{ secrets.PACT_PASS }}
         run: |
-          echo $PACT_PASS
+          echo "this is the echo of the user, its a secret"
+          echo $PACT_USER
           echo env
         
           # curl -s -u "$PACT_USER:$PACT_PASS" -o /dev/null -w "%{http_code}\n" https://ffc-pact-broker.azure.defra.cloud
