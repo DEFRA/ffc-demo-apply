@@ -30,10 +30,7 @@ jobs:
           echo "PACT_USER length: ${#PACT_USER}"          
           echo "PACT_USER: ${PACT_USER}"
 
-      # - name: Pact Broker connectivity
-      #   env:
-      #     PACT_USER: ${{ secrets.PACT_USER }}
-      #     PACT_PASS: ${{ secrets.PACT_PASS }}
-      #   run: |
-      #     echo "this is the echo of the user, its a secret"
-      #     # curl -s -u "$PACT_USER:$PACT_PASS" -o /dev/null -w "%{http_code}\n" https://ffc-pact-broker.azure.defra.cloud
+      - name: Pact Broker connectivity
+        run: |
+          echo "this is the echo of the user, its a secret"
+          curl -s -u "$PACT_USER:$PACT_PASS" -o /dev/null -w "%{http_code}\n" https://ffc-pact-broker.azure.defra.cloud
