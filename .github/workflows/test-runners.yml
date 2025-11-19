@@ -1,0 +1,36 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Test-Runners
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "test/gh-runners" ]
+  pull_request:
+    branches: [ "test/gh-runners" ]
+
+  # Allows you to run this workflow manually from the Actions tab.
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Mask secrets
+        run: |
+          echo "::add-mask::$PACT_USER"
+          echo "::add-mask::$PACT_PASS"
+      
+      - name: Check PACT_USER
+        run: |
+          echo "PACT_USER is set: ${PACT_USER:+yes}"
+          echo "PACT_USER length: ${#PACT_USER}"          
+          echo "PACT_USER: ${PACT_USER}"
+
+      - name: Pact Broker connectivity
+        run: |
+          echo "this is the echo of the user, its a secret"
+          curl -s -u "$PACT_USER:$PACT_PASS" -o /dev/null -w "%{http_code}\n" https://ffc-pact-broker.azure.defra.cloud
