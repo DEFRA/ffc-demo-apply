@@ -1,13 +1,13 @@
 name: '$(Build.SourceBranchName)$(System.PullRequest.SourceBranch)$(Rev:.r)'
 
-trigger:
-  - main
-  - feature/*
-  - release/*
+# trigger:
+#   - main
+#   - feature/*
+#   - release/*
 
-pr:
-  - main
-  - releases/*
+# pr:
+#   - main
+#   - releases/*
 
 parameters:
   - name: prDeployment
