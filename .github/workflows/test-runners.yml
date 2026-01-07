@@ -32,5 +32,5 @@ jobs:
 
       - name: Pact Broker connectivity
         run: |
-          echo "this is the echo of the user, its a secret."
+          echo "this is the echo of the user, its a secret"
           curl -s -u "$PACT_USER:$PACT_PASS" -o /dev/null -w "%{http_code}\n" https://ffc-pact-broker.azure.defra.cloud
