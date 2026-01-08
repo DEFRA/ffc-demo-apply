@@ -3,7 +3,7 @@ environment: production
 environmentCode: dev
 container:
   applyQueueAddress: ffc-demo-apply
-  messageQueueHost: SNDFFCINFSB2001.servicebus.windows.net
+  messageQueueHost: DEVFFCINFSB1001.servicebus.windows.net
 secretProviderClass:
   azure:
     keyvaultName: DEVFFCINFKV1001
