@@ -19,6 +19,9 @@ parameters:
   - name: sndDeployment
     type: boolean
     default: true
+  - name: deployVersion
+    type: string
+    default: ""
 
 resources:
   repositories:
@@ -26,7 +29,7 @@ resources:
       endpoint: DEFRA
       type: github
       name: defra/fcp-pipeline-common
-      ref: pl-998
+      ref: pl-1035
 
 extends:
   template: fcp-common-pipeline.yaml@templates
@@ -35,6 +38,7 @@ extends:
     prDeployment: ${{ parameters.prDeployment }}
     branchDeployment: ${{ parameters.branchDeployment }}
     sndDeployment: ${{ parameters.sndDeployment }}
+    deployVersion: ${{ parameters.deployVersion }}
     # failOnThreshold: high
     # enableServiceNowChangeCreationSandpit: true
     # enableServiceNowChangeCreation: true
