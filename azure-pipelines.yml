@@ -35,6 +35,15 @@ extends:
     prDeployment: ${{ parameters.prDeployment }}
     branchDeployment: ${{ parameters.branchDeployment }}
     sndDeployment: ${{ parameters.sndDeployment }}
+    variableGroupName: ffc-demo-apply-env-var
+    pr_params:
+      livenessProbe.timeoutSeconds: $(snd2_livenessProbe_timeoutSeconds)
+      readinessProbe.failureThreshold: $(snd2_readinessProbe_failureThreshold)    
+    snd2_params:
+      livenessProbe.timeoutSeconds: $(snd2_livenessProbe_timeoutSeconds)
+      readinessProbe.failureThreshold: $(snd2_readinessProbe_failureThreshold)
+    dev_params:
+      livenessProbe.timeoutSeconds: $(dev_livenessProbe_timeoutSeconds)      
     # failOnThreshold: high
     # enableServiceNowChangeCreationSandpit: true
     # enableServiceNowChangeCreation: true
