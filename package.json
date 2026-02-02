@@ -40,7 +40,7 @@
     "jest-junit": "16.0.0",
     "nodemon": "3.1.4",
     "sequelize-mock": "0.10.2",
-    "standard": "17.1.2"
+    "standard": "^17.1.2"
   },
   "standard": {
     "globals": [
