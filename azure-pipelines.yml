@@ -16,9 +16,12 @@ parameters:
   - name: branchDeployment
     type: boolean
     default: true
-  - name: sndDeployment
+  - name: snd2Deployment
     type: boolean
     default: true
+  - name: snd1Deployment
+    type: boolean
+    default: false
 
 resources:
   repositories:
@@ -26,7 +29,7 @@ resources:
       endpoint: DEFRA
       type: github
       name: defra/fcp-pipeline-common
-      # ref: pl-1050
+      ref: pl-983
 
 extends:
   template: fcp-common-pipeline.yaml@templates
@@ -34,7 +37,8 @@ extends:
     appFrameworkType: nodejs
     prDeployment: ${{ parameters.prDeployment }}
     branchDeployment: ${{ parameters.branchDeployment }}
-    sndDeployment: ${{ parameters.sndDeployment }}
+    sndDeployment: ${{ parameters.snd2Deployment }}
+    snd1Deployment: ${{ parameters.snd1Deployment }}
     variableGroupName: ffc-demo-apply-env-var
     pr_params:
       livenessProbe.timeoutSeconds: $(snd2_livenessProbe_timeoutSeconds)
@@ -45,5 +49,6 @@ extends:
     dev_params:
       livenessProbe.timeoutSeconds: $(dev_livenessProbe_timeoutSeconds)      
     # failOnThreshold: high
-    enableServiceNowChangeCreationDev: true
-    enableServiceNowChangeCreation: true
+    enableServiceNowChangeCreationDev: false
+    enableServiceNowChangeCreation: false
+
