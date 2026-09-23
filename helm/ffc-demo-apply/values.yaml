@@ -33,6 +33,7 @@ container:
   messageQueueHost: myservicebus.servicebus.windows.net
   appInsightsConsoleDebugEnabled: true
   port: 3000
+  appArmorProfile: "RuntimeDefault"
 
 livenessProbe:
   path: /healthz
