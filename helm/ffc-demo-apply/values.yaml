@@ -13,8 +13,8 @@ labels: {}
 containerConfigMap:
   name: ffc-demo-apply
 
-containerSecret:
-  name: ffc-demo-apply
+# containerSecret:
+#   name: ffc-demo-apply
   
 deployment:
   restartPolicy: Always
