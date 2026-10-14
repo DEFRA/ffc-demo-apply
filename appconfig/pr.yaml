@@ -5,12 +5,12 @@ container:
   applyQueueAddress: queue:ffc-demo-apply
   messageQueueHost: SNDFFCINFSB2001.servicebus.windows.net
 
-secretProviderClass:
-  azure:
-    keyvaultName: SNDFFCINFKV2001
-    objects: # reading the secret from Azure Key Vault
-      - objectName: adoAgentPassword # secret name in Azure Key Vault
-        objectType: secret
+# secretProviderClass:
+#   azure:
+#     keyvaultName: SNDFFCINFKV2001
+#     objects: # reading the secret from Azure Key Vault
+#       - objectName: adoAgentPassword # secret name in Azure Key Vault
+#         objectType: secret
 
 #   secretObjects: # creating a kubernetes secret from the Azure Key Vault secrets
 #     - secretName: ffc-demo-apply
