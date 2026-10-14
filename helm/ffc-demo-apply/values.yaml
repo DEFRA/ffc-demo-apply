@@ -63,3 +63,13 @@ workloadIdentity: true
 azureIdentity:
   resourceID: not-a-real-value
   clientID: not-a-real-value
+
+secretProviderClass:
+  azure:
+    keyvaultName: SNDFFCINFKV2001
+    objects: # reading the secret from Azure Key Vault
+
+  secretObjects: # creating a kubernetes secret from the Azure Key Vault secrets
+    - secretName: ffc-demo-apply
+      type: Opaque
+      data:
