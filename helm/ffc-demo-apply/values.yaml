@@ -67,7 +67,7 @@ azureIdentity:
 secretProviderClass:
   azure:
     keyvaultName: SNDFFCINFKV2001
-    objects: # reading the secret from Azure Key Vault
+    objects: []
 
   secretObjects: # creating a kubernetes secret from the Azure Key Vault secrets
     - secretName: ffc-demo-apply
