@@ -5,7 +5,7 @@ spec:
       metadata:
         timezone: Europe/London
         start: 0 6 * * *
-        end: 0 15 * * *
+        end: 30 15 * * *
         desiredReplicas: "1"
 {{- end -}}
 
