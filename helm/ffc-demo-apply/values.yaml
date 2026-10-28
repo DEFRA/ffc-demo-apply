@@ -22,6 +22,9 @@ deployment:
   replicas: 1
   minReadySeconds: 5
   imagePullSecret:
+  minReplicas: 0
+
+overnightScaling: true
 
 container:
   imagePullPolicy: IfNotPresent
