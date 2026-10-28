@@ -1,5 +1,3 @@
-{{- if .Values.overnightScaling }}
-{{- include "ffc-helm-library.keda-scaled-object" (list . "microservice.keda-scaled-object") -}}
 {{- define "microservice.keda-scaled-object" -}}
 spec:
   triggers:
@@ -10,4 +8,7 @@ spec:
         end: 0 15 * * *
         desiredReplicas: "1"
 {{- end -}}
+
+{{- if .Values.overnightScaling }}
+{{- include "ffc-helm-library.keda-scaled-object" (list . "microservice.keda-scaled-object") -}}
 {{- end }}
