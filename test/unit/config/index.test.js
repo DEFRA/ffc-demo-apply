@@ -1,8 +1,3 @@
-jest.mock('@azure/identity', () => ({
-  DefaultAzureCredential: jest.fn(),
-  getBearerTokenProvider: jest.fn()
-}))
-
 describe('config/index', () => {
   const ORIGINAL_ENV = process.env
 

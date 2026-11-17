@@ -1,8 +1,3 @@
-jest.mock('@azure/identity', () => ({
-  DefaultAzureCredential: jest.fn(),
-  getBearerTokenProvider: jest.fn()
-}))
-
 jest.mock('../../../../app/messaging/outbox/publish-pending', () => jest.fn())
 
 describe('messaging/outbox/index', () => {
