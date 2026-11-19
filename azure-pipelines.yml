@@ -29,7 +29,7 @@ resources:
       endpoint: DEFRA
       type: github
       name: defra/fcp-pipeline-common
-      ref:  refs/heads/feat/mm/pl-1499-node24
+      ref:  faa40ef32a2dd2fe4975df6d8739ee346cdf5c7b
 
 extends:
   template: fcp-common-pipeline.yaml@templates
